@@ -21,7 +21,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
-                R.array.testArray, android.R.layout.simple_spinner_dropdown_item);
+                R.array.testArray, R.layout.item_dropdown_spinner);
+
 
         ActionBar actionBar = getSupportActionBar();
 
@@ -36,10 +37,4 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options, menu);
-        return true;
-    }
 }
