@@ -3,8 +3,20 @@
     <string-array name="testArray">
         <item>Shelter</item>
         <item>Benefits</item>
-        <item>Food</item>
         <item>Health</item>
         <item>Employment</item>
+    </string-array>
+    <string-array name="Shelter">
+        <item>Find Beds (for Youth)</item>
+    </string-array>
+    <string-array name="Benefits">
+        <item>Check Your Social Security Benefits</item>
+    </string-array>
+    <string-array name="Health">
+        <item>Get Help Signing Up For Medicaid</item>
+        <item>Find a Health Center</item>
+    </string-array>
+    <string-array name="Employment">
+        <item>Monster.com</item>
     </string-array>
 </resources>
