@@ -2,7 +2,6 @@ package colintheshots.homelesshomescreen.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,6 @@ public class HelpListAdapter extends BaseAdapter {
         StringBuilder json=new StringBuilder();
 
         try {
-            Log.e("TEST", helpListMap.get(key));
             InputStream inputStream = context.getAssets().open(helpListMap.get(key));
 
             BufferedReader in=
@@ -103,7 +101,6 @@ public class HelpListAdapter extends BaseAdapter {
         String[] splitStringParts = value.split("\\|\\|");
 
         if (splitStringParts.length>1) {
-            Log.e("Value", splitStringParts[0]);
             Picasso.with(context).load(splitStringParts[0]).resize(80,80).centerCrop().into(holder.resourceImage);
             holder.resourceName.setText(key);
             holder.resourceUrl.setText(splitStringParts[1]);

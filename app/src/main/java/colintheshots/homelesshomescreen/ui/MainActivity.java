@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
         menuMap.put("Benefits","benefits.json");
         menuMap.put("Health","health.json");
         menuMap.put("Employment","employment.json");
+        menuMap.put("Veterans","veterans.json");
 
         SpinnerAdapter mSpinnerAdapter = new ArrayAdapter<String>(this,
                 R.layout.item_dropdown_spinner, menuMap.keySet().toArray(new String[menuMap.keySet().size()]));
@@ -44,11 +44,9 @@ public class MainActivity extends ActionBarActivity {
 
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-//        final String[] strings = getResources().getStringArray(R.array.testArray);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, new ActionBar.OnNavigationListener() {
             @Override
             public boolean onNavigationItemSelected(int i, long l) {
-//                Log.e("REMOVEME", strings[i]);
                 HelpListAdapter helpListAdapter = new HelpListAdapter(menuMap, MainActivity.this, i);
                 ListView listView = (ListView) findViewById(R.id.listView);
                 listView.setAdapter(helpListAdapter);
@@ -68,6 +66,11 @@ public class MainActivity extends ActionBarActivity {
                         Intent viewIntent = new Intent(Intent.ACTION_VIEW);
                         viewIntent.setData(Uri.parse(url));
                         startActivity(viewIntent);
+                    } else if (url.startsWith("1")) { // if it starts with "1", dial a phone number
+                        String uri = "tel:" + url.trim();
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse(uri));
+                        startActivity(intent);
                     } else { // load the app if available
                         Intent packageIntent;
                         try {
