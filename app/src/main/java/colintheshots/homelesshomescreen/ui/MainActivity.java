@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.SpinnerAdapter;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -21,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import colintheshots.homelesshomescreen.R;
+import colintheshots.homelesshomescreen.adapters.HelpListAdapter;
 
 /**
  * Created by colintheshots on 6/21/14.
@@ -51,30 +54,10 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public boolean onNavigationItemSelected(int i, long l) {
 //                Log.e("REMOVEME", strings[i]);
-                String key = Iterables.get(menuMap.keySet(), i);
-                StringBuilder json=new StringBuilder();
-
-                try {
-                    Log.e("TEST",menuMap.get(key));
-                    InputStream inputStream = getAssets().open(menuMap.get(key));
-
-                    BufferedReader in=
-                            new BufferedReader(new InputStreamReader(inputStream));
-
-                    String rawJson = "";
-
-                    while ((rawJson=in.readLine()) != null) {
-                        json.append(rawJson);
-                    }
-
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                Map<String,String> map=new HashMap<String,String>();
-
-                map = (Map<String,String>) new Gson().fromJson(json.toString(), map.getClass());
+                HelpListAdapter helpListAdapter = new HelpListAdapter(menuMap, MainActivity.this, i);
+                ListView listView = (ListView) findViewById(R.id.listView);
+                listView.setAdapter(helpListAdapter);
+                listView.setVisibility(View.VISIBLE);
                 return false;
             }
         });
