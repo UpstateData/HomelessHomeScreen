@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,7 +45,7 @@ public class HelpListAdapter extends BaseAdapter {
             BufferedReader in=
                     new BufferedReader(new InputStreamReader(inputStream));
 
-            String rawJson = "";
+            String rawJson;
 
             while ((rawJson=in.readLine()) != null) {
                 json.append(rawJson);
@@ -87,6 +89,7 @@ public class HelpListAdapter extends BaseAdapter {
             assert row != null;
 
             holder = new ResourceHolder();
+            holder.resourceImage = (ImageView) row.findViewById(R.id.resource_image);
             holder.resourceName = (TextView) row.findViewById(R.id.resource_name);
             holder.resourceUrl = (TextView) row.findViewById(R.id.resource_url);
 
@@ -96,14 +99,21 @@ public class HelpListAdapter extends BaseAdapter {
         }
 
         String key = (String) getItem(position);
+        String value = helpListMap.get(key);
+        String[] splitStringParts = value.split("\\|\\|");
 
-        holder.resourceName.setText(key);
-        holder.resourceUrl.setText(helpListMap.get(key));
+        if (splitStringParts.length>1) {
+            Log.e("Value", splitStringParts[0]);
+            Picasso.with(context).load(splitStringParts[0]).resize(80,80).centerCrop().into(holder.resourceImage);
+            holder.resourceName.setText(key);
+            holder.resourceUrl.setText(splitStringParts[1]);
+        }
 
         return row;
     }
 
     public class ResourceHolder {
+        ImageView resourceImage;
         TextView resourceName;
         TextView resourceUrl;
     }
