@@ -40,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
         menuMap.put("Food","food.json");
         menuMap.put("Domestic Violence","violence.json");
         menuMap.put("Legal","legal.json");
+        menuMap.put("Education","education.json");
 
         SpinnerAdapter mSpinnerAdapter = new ArrayAdapter<String>(this,
                 R.layout.item_dropdown_spinner, menuMap.keySet().toArray(new String[menuMap.keySet().size()]));
@@ -70,7 +71,7 @@ public class MainActivity extends ActionBarActivity {
                         Intent viewIntent = new Intent(Intent.ACTION_VIEW);
                         viewIntent.setData(Uri.parse(url));
                         startActivity(viewIntent);
-                    } else if (url.startsWith("1")) { // if it starts with "1", dial a phone number
+                    } else if (Character.isDigit(url.charAt(0))) { // if it starts with "1", dial a phone number
                         String uri = "tel:" + url.trim();
                         Intent intent = new Intent(Intent.ACTION_DIAL);
                         intent.setData(Uri.parse(uri));
