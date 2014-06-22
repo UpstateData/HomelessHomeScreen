@@ -36,6 +36,10 @@ public class MainActivity extends ActionBarActivity {
         menuMap.put("Health","health.json");
         menuMap.put("Employment","employment.json");
         menuMap.put("Veterans","veterans.json");
+        menuMap.put("Housing","housing.json");
+        menuMap.put("Food","food.json");
+        menuMap.put("Domestic Violence","violence.json");
+        menuMap.put("Legal","legal.json");
 
         SpinnerAdapter mSpinnerAdapter = new ArrayAdapter<String>(this,
                 R.layout.item_dropdown_spinner, menuMap.keySet().toArray(new String[menuMap.keySet().size()]));
