@@ -1,0 +1,118 @@
+{
+	"Benefits" : [{
+			"name" : "Check Social Security Application",
+			"image_url" : "http://southjerseylawfirm.com/blog/wp-content/uploads/2012/05/social-security-logo.png",
+			"url" : "https://secure.ssa.gov/apps6z/IAPS/applicationStatus"
+		}, {
+			"name" : "Find If You Qualify For SNAP",
+			"image_url" : "http://www.ct.gov/dss/lib/dss/images/snap.gif",
+			"url" : "http://mn.bridgetobenefits.org/ScreeningTool"
+		}, {
+		    "name" : "Find Help Applying for Medical",
+		    "image_url" : "http://www.gannett-cdn.com/-mm-/e6e69b939e75834a98fac15f52170dde51951da0/c=146-150-1591-1236&r=x404&c=534x401/local/-/media/StCloud/StCloud/2014/03/27//1395953104000-mnsure-logo.png",
+		    "url" : "https://www.mnsure.org/tools/locater/index.jsp"
+		}, {
+            "name" : "Call to Find a Medical Navigator",
+            "image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+            "url" : "18553367873"
+		}
+	],
+	"Education" : [{
+			"name" : "Call for English Classes",
+			"image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+			"url" : "18002221990"
+		}, {
+			"name" : "Call for GED Computer Classes",
+			"image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+			"url" : "16126671908"
+		}
+	],
+	"Employment" : [{
+	        "name" : "Find a Job (Indeed Jobs)",
+	        "image_url" : "https://lh6.ggpht.com/LSdwML2eA1vnPANR2oa89FmhrbCUms6cd8sI9qzS4AZtLvKn152vvpzwtnZvXOifiCY=w300",
+	        "url" : "com.indeed.android.jobsearch"
+	    }, {
+	        "name" : "Find a Job (SnagAJob)",
+	        "image_url" : "https://lh6.ggpht.com/I_4ZFWDMJhMB5gjV4sBW_kElkx-4pQU3TaZ4OHG72itjHd228oqjhKGRet_UZf90hho=w300-rw",
+	        "url" : "com.snagajob.jobseeker"
+	    }, {
+            "name" : "Find a Job (CareerBuilder)",
+            "image_url" : "https://lh6.ggpht.com/cqaYrEg7I4qI1FsXiDBsF8KWHXqOn59CUQtbxu9U5LbD781-iveqBEFZfRwmOVdK3Ebn=w300-rw",
+            "url" : "com.careerbuilder.SugarDrone"
+	    }
+	],
+	"Food" : [{
+            "name" : "Find If You Qualify For SNAP",
+            "image_url" : "http://www.ct.gov/dss/lib/dss/images/snap.gif",
+            "url" : "http://mn.bridgetobenefits.org/ScreeningTool"
+        }, {
+            "name" : "Find a Food Pantry",
+            "image_url" : "http://fesncc.com/wp-content/uploads/2013/03/Food-Pantry.jpg",
+            "url" : "http://www.foodpantries.org/"
+        }, {
+            "name" : "Call the MN Food Helpline",
+            "image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+            "url" : "18887111151"
+        }, {
+            "name" : "Call the United Way Hotline",
+            "image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+            "url" : "211"
+        }
+    ],
+    "Health" : [{
+            "name" : "Find a Free Health Center",
+            "image_url" : "https://lh6.ggpht.com/ngfrW9nFaK-vMI-_A6uvZBrS2zJ9EgpPUkZ1AlSxLGrO3v3j8Ggy0prVRWqimhIl1HZP=w300-rw",
+            "url" : "gov.hrsa.fahc"
+        }, {
+            "name" : "Call For Free Walk-in Counseling",
+            "image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+            "url" : "16128700565"
+        }, {
+            "name" : "Call Alcoholics Anonymous",
+            "image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+            "url" : "19529220880"
+        }, {
+            "name" : "Call Narcotics Anonymous",
+            "image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+            "url" : "18777677676"
+        }, {
+            "name" : "Call AIDS Hotline",
+            "image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+            "url" : "18002482437"
+        }
+    ],
+	"Housing" : [{
+			"name" : "Call for MN Shelter Info",
+			"image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+			"url" : "18882341329"
+		}, {
+			"name" : "Find a MN Youth Shelter",
+			"image_url" : "http://0.static.wix.com/media/a58851183aef46afd6af2319bcba9426.wix_mp_256",
+			"url" : "http://ysnmn.org/#/home"
+		}
+	],
+	"Legal" : [{
+			"name" : "Call Crime Victim Services Hotline",
+			"image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+			"url" : "16123405400"
+		}, {
+			"name" : "Get Free Legal Advice",
+			"image_url" : "http://www.volunteerlawyersnetwork.org/wp-content/uploads/2014/02/VLN_Logo.png",
+			"url" : "https://www.vlnmn.org/help/client-resources/"
+		}, {
+		    "name" : "Find Online Law Help",
+		    "image_url" : "http://www.lawhelpmn.org/files/1765CC5E-1EC9-4FC4-65EC-957272D8A04E/images/design/New_MN-LH3-logo.png",
+		    "url" : "http://www.lawhelpmn.org"
+		}
+	],
+	"Veterans" : [{
+			"name" : "Call MN Veterans Linkage Line",
+			"image_url" : "https://openclipart.org/image/300px/svg_to_png/185269/phone-icon.png",
+			"url" : "18885465838"
+		}, {
+			"name" : "Find VA Housing Assistance Info",
+			"image_url" : "http://www.wbdg.org/images/pa_valogo.gif",
+			"url" : "http://www.va.gov/homeless/housing.asp"
+		}
+	]
+}

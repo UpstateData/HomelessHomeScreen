@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedListMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -18,60 +21,39 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import colintheshots.homelesshomescreen.R;
+import colintheshots.homelesshomescreen.model.serializers.Category;
 
 /**
  * Created by colintheshots on 6/21/14.
  */
 public class HelpListAdapter extends BaseAdapter {
 
-    private Map<String, String> helpListMap = new HashMap<String, String>();
+    private List<Category> categoryList;
     private Context context;
 
-    public HelpListAdapter(Map<String, String> helpListMap, Context context, int i) {
-
-        this.context = context;
-
+    public HelpListAdapter(ListMultimap<String, Category> helpListMap, Context context, Integer i) {
         String key = Iterables.get(helpListMap.keySet(), i);
-        StringBuilder json=new StringBuilder();
-
-        try {
-            InputStream inputStream = context.getAssets().open(helpListMap.get(key));
-
-            BufferedReader in=
-                    new BufferedReader(new InputStreamReader(inputStream));
-
-            String rawJson;
-
-            while ((rawJson=in.readLine()) != null) {
-                json.append(rawJson);
-            }
-
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Map<String,String> map=new HashMap<String,String>();
-
-        this.helpListMap = (Map<String,String>) new Gson().fromJson(json.toString(), map.getClass());
+        this.categoryList = helpListMap.get(key);
+        this.context = context;
     }
 
     @Override
     public int getCount() {
-        return helpListMap.size();
+        return categoryList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return Iterables.get(helpListMap.keySet(), position);
+        return categoryList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0L;
+        return position;
     }
 
     @Override
@@ -79,7 +61,6 @@ public class HelpListAdapter extends BaseAdapter {
 
         View row = convertView;
         ResourceHolder holder;
-
 
         if (row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -96,14 +77,12 @@ public class HelpListAdapter extends BaseAdapter {
             holder = (ResourceHolder) row.getTag();
         }
 
-        String key = (String) getItem(position);
-        String value = helpListMap.get(key);
-        String[] splitStringParts = value.split("\\|\\|");
+        Category value = categoryList.get(position);
 
-        if (splitStringParts.length>1) {
-            Picasso.with(context).load(splitStringParts[0]).resize(80,80).centerCrop().into(holder.resourceImage);
-            holder.resourceName.setText(key);
-            holder.resourceUrl.setText(splitStringParts[1]);
+        if (value!=null) {
+            Picasso.with(context).load(value.getImage_url()).resize(80, 80).centerCrop().into(holder.resourceImage);
+            holder.resourceName.setText(value.getName());
+            holder.resourceUrl.setText(value.getUrl());
         }
 
         return row;

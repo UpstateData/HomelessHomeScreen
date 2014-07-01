@@ -13,18 +13,30 @@ import android.widget.ListView;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
+import com.google.common.collect.LinkedListMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
 import colintheshots.homelesshomescreen.R;
 import colintheshots.homelesshomescreen.adapters.HelpListAdapter;
+import colintheshots.homelesshomescreen.model.serializers.Category;
+import colintheshots.homelesshomescreen.model.serializers.MultimapSerializer;
 
 /**
  * Created by colintheshots on 6/21/14.
  */
 public class MainActivity extends ActionBarActivity {
 
-    Map<String, String> menuMap = new HashMap<String, String>();
+    ListMultimap<String, Category> menuMap = LinkedListMultimap.create();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,15 +44,38 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
-        menuMap.put("Benefits","benefits.json");
-        menuMap.put("Health","health.json");
-        menuMap.put("Employment","employment.json");
-        menuMap.put("Veterans","veterans.json");
-        menuMap.put("Housing","housing.json");
-        menuMap.put("Food","food.json");
-        menuMap.put("Domestic Violence","violence.json");
-        menuMap.put("Legal","legal.json");
-        menuMap.put("Education","education.json");
+        Gson gson = new GsonBuilder().registerTypeHierarchyAdapter(Multimap.class, new MultimapSerializer()).create();
+
+        StringBuilder json=new StringBuilder();
+
+        try {
+            InputStream inputStream = getAssets().open("multimap.json");
+
+            BufferedReader in=
+                    new BufferedReader(new InputStreamReader(inputStream));
+
+            String rawJson;
+
+            while ((rawJson=in.readLine()) != null) {
+                json.append(rawJson);
+            }
+
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        menuMap = (ListMultimap<String,Category>) gson.fromJson(json.toString(), ListMultimap.class);
+
+//        menuMap.put("Benefits","benefits.json");
+//        menuMap.put("Health","health.json");
+//        menuMap.put("Employment","employment.json");
+//        menuMap.put("Veterans","veterans.json");
+//        menuMap.put("Housing","housing.json");
+//        menuMap.put("Food","food.json");
+//        menuMap.put("Domestic Violence","violence.json");
+//        menuMap.put("Legal","legal.json");
+//        menuMap.put("Education","education.json");
 
         SpinnerAdapter mSpinnerAdapter = new ArrayAdapter<String>(this,
                 R.layout.item_dropdown_spinner, menuMap.keySet().toArray(new String[menuMap.keySet().size()]));
